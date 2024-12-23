@@ -1,0 +1,392 @@
+﻿@model QRCodeModel
+@{
+    ViewData["Title"] = "Generate QR Code";
+    Layout = "_Layout2";
+}
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-12">
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="design-tab-pane" role="tabpanel" aria-labelledby="design-tab" tabindex="0">
+                    <form asp-action="Test">
+                        <div class="row">
+
+                            <div class="col">
+                                <div class="custom-block bg-white shadow-lg">
+                                    <a>
+                                        <div class="row mt-2 hideDiv" id="DIV1">
+                                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                                <label>Enter your website URL</label>
+                                                <input autocomplete="off" type="url" asp-for="WebsiteURL" class="form-control" />
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <div class="row mt-2">
+                                        <div class="col-lg-6 col-md-6 col-sm-12">
+                                            <button type="submit" class="btn btn-primary">Generate</button>
+                                            <button type="reset" class="btn btn-secondary">Reset</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="col">
+                                <div class="custom-block bg-white shadow-lg">
+                                    <a>
+                                        <div class="d-flex">
+                                            <div>
+                                                @if (Model != null)
+                                                {
+                                                    if (!(Model.QRImageURL == null))
+                                                    {
+                                                        <div class="row mt-2" id="qrCodeImage">
+                                                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                                                <img height="250" width="250" src="@Model.QRImageURL" />
+                                                            </div>
+                                                        </div>
+                                                    }
+                                                }
+                                            </div>
+
+                                            <span class="badge bg-design rounded-pill ms-auto">100</span>
+                                        </div>
+
+
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+
+                <div class="tab-pane fade" id="marketing-tab-pane" role="tabpanel" aria-labelledby="marketing-tab" tabindex="0">
+                    <form asp-action="Test">
+                        <div class="row">
+
+                            <div class="col">
+                                <div class="custom-block bg-white shadow-lg">
+                                    <a>
+                                        <!-- Book Mark URL   -->
+                                        <div class="row mt-2 hideDiv" id="DIV2">
+                                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                                <label>Enter your URL</label>
+                                                <input type="url" asp-for="BookmarkURL" class="form-control" autocomplete="off" />
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <div class="row mt-2">
+                                        <div class="col-lg-6 col-md-6 col-sm-12">
+                                            <button type="submit" class="btn btn-primary">Generate</button>
+                                            <button type="reset" class="btn btn-secondary">Reset</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="col">
+                                <div class="custom-block bg-white shadow-lg">
+                                    <a>
+                                        <div class="d-flex">
+                                            <div>
+                                                @if (Model != null)
+                                                {
+                                                    if (!(Model.QRImageURL == null))
+                                                    {
+                                                        <div class="row mt-2" id="qrCodeImage">
+                                                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                                                <img height="250" width="250" src="@Model.QRImageURL" />
+                                                            </div>
+                                                        </div>
+                                                    }
+                                                }
+                                            </div>
+
+                                            <span class="badge bg-design rounded-pill ms-auto">100</span>
+                                        </div>
+
+
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+
+                <div class="tab-pane fade" id="finance-tab-pane" role="tabpanel" aria-labelledby="finance-tab" tabindex="0">
+                    <form asp-action="Test">
+                        <div class="row">
+
+                            <div class="col">
+                                <div class="custom-block bg-white shadow-lg">
+                                    <a>
+                                        <!--  SMS  -->
+                                        <div id="DIV3" class="hideDiv">
+                                            <div class="row mt-2">
+                                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                                    <label>Enter Phone Number with country code(eg. +91)</label>
+                                                    <input type="text" asp-for="SMSPhoneNumber" class="form-control" autocomplete="off" />
+                                                </div>
+                                            </div>
+                                            <div class="row mt-2">
+                                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                                    <label>Enter your Message</label>
+                                                    <textarea asp-for="SMSBody" class="form-control"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <div class="row mt-2">
+                                        <div class="col-lg-6 col-md-6 col-sm-12">
+                                            <button type="submit" class="btn btn-primary">Generate</button>
+                                            <button type="reset" class="btn btn-secondary">Reset</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="col">
+                                <div class="custom-block bg-white shadow-lg">
+                                    <a>
+                                        <div class="d-flex">
+                                            <div>
+                                                @if (Model != null)
+                                                {
+                                                    if (!(Model.QRImageURL == null))
+                                                    {
+                                                        <div class="row mt-2" id="qrCodeImage">
+                                                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                                                <img height="250" width="250" src="@Model.QRImageURL" />
+                                                            </div>
+                                                        </div>
+                                                    }
+                                                }
+                                            </div>
+
+                                            <span class="badge bg-design rounded-pill ms-auto">100</span>
+                                        </div>
+
+
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+
+                <div class="tab-pane fade" id="music-tab-pane" role="tabpanel" aria-labelledby="music-tab" tabindex="0">
+                    <form asp-action="Test">
+                        <div class="row">
+
+                            <div class="col">
+                                <div class="custom-block bg-white shadow-lg">
+                                    <a>
+                                        <!--  Whats App Message  -->
+                                        <div id="DIV4" class="hideDiv">
+                                            <div class="row mt-2">
+                                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                                    <label>Enter WhatsApp Number with country code(eg. +91)</label>
+                                                    <input type="text" asp-for="WhatsAppNumber" class="form-control" autocomplete="off" />
+                                                </div>
+                                            </div>
+                                            <div class="row mt-2">
+                                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                                    <label>Enter your Message</label>
+                                                    <textarea asp-for="WhatsAppMessage" class="form-control"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <div class="row mt-2">
+                                        <div class="col-lg-6 col-md-6 col-sm-12">
+                                            <button type="submit" class="btn btn-primary">Generate</button>
+                                            <button type="reset" class="btn btn-secondary">Reset</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="col">
+                                <div class="custom-block bg-white shadow-lg">
+                                    <a>
+                                        <div class="d-flex">
+                                            <div>
+                                                @if (Model != null)
+                                                {
+                                                    if (!(Model.QRImageURL == null))
+                                                    {
+                                                        <div class="row mt-2" id="qrCodeImage">
+                                                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                                                <img height="250" width="250" src="@Model.QRImageURL" />
+                                                            </div>
+                                                        </div>
+                                                    }
+                                                }
+                                            </div>
+
+                                            <span class="badge bg-design rounded-pill ms-auto">100</span>
+                                        </div>
+
+
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+
+                <div class="tab-pane fade" id="education-tab-pane" role="tabpanel" aria-labelledby="education-tab" tabindex="0">
+                    <form asp-action="Test">
+                        <div class="row">
+
+                            <div class="col">
+                                <div class="custom-block bg-white shadow-lg">
+                                    <a>
+                                        <!--  Compose Email  -->
+                                        <div id="DIV5" class="hideDiv">
+                                            <div class="row mt-2">
+                                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                                    <label>Enter Receive's Email Address</label>
+                                                    <input type="text" asp-for="ReceiverEmailAddress" class="form-control" autocomplete="off" />
+                                                </div>
+                                            </div>
+                                            <div class="row mt-2">
+                                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                                    <label>Enter Email Subject</label>
+                                                    <input type="text" asp-for="EmailSubject" class="form-control" autocomplete="off" />
+                                                </div>
+                                            </div>
+                                            <div class="row mt-2">
+                                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                                    <label>Enter Email Message</label>
+                                                    <textarea asp-for="EmailMessage" class="form-control"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <div class="row mt-2">
+                                        <div class="col-lg-6 col-md-6 col-sm-12">
+                                            <button type="submit" class="btn btn-primary">Generate</button>
+                                            <button type="reset" class="btn btn-secondary">Reset</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="col">
+                                <div class="custom-block bg-white shadow-lg">
+                                    <a>
+                                        <div class="d-flex">
+                                            <div>
+                                                @if (Model != null)
+                                                {
+                                                    if (!(Model.QRImageURL == null))
+                                                    {
+                                                        <div class="row mt-2" id="qrCodeImage">
+                                                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                                                <img height="250" width="250" src="@Model.QRImageURL" />
+                                                            </div>
+                                                        </div>
+                                                    }
+                                                }
+                                            </div>
+
+                                            <span class="badge bg-design rounded-pill ms-auto">100</span>
+                                        </div>
+
+
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+                <div class="tab-pane fade" id="wifi-tab-pane" role="tabpanel" aria-labelledby="wifi-tab" tabindex="0">
+                    <form asp-action="Test">
+                        <div class="row">
+
+                            <div class="col">
+                                <div class="custom-block bg-white shadow-lg">
+                                    <a>
+                                        <!--   WIFI   -->
+                                        <div id="DIV6" class="hideDiv">
+                                            <div class="row mt-2">
+                                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                                    <label>Enter WIFI Name</label>
+                                                    <input type="text" asp-for="WIFIName" class="form-control" autocomplete="off" />
+                                                </div>
+                                            </div>
+                                            <div class="row mt-2">
+                                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                                    <label>Enter WIFI Password</label>
+                                                    <input type="text" asp-for="WIFIPassword" class="form-control" autocomplete="off" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <div class="row mt-2">
+                                        <div class="col-lg-6 col-md-6 col-sm-12">
+                                            <button type="submit" class="btn btn-primary">Generate</button>
+                                            <button type="reset" class="btn btn-secondary">Reset</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="col">
+                                <div class="custom-block bg-white shadow-lg">
+                                    <a>
+                                        <div class="d-flex">
+                                            <div>
+                                                @if (Model != null)
+                                                {
+                                                    if (!(Model.QRImageURL == null))
+                                                    {
+                                                        <div class="row mt-2" id="qrCodeImage">
+                                                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                                                <img height="250" width="250" src="@Model.QRImageURL" />
+                                                            </div>
+                                                        </div>
+                                                    }
+                                                }
+                                            </div>
+
+                                            <span class="badge bg-design rounded-pill ms-auto">100</span>
+                                        </div>
+
+
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+    <script>
+        $(document).ready(function () {
+            $("#QRCodeType").trigger("change");
+        });
+
+        function onQRCodeTypeChange() {
+            let qrcodeType = $("#QRCodeType").val();
+            $(".hideDiv").hide();
+            $("#DIV" + qrcodeType).show();
+        }
+    </script>
